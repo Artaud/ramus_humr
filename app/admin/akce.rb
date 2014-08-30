@@ -1,4 +1,5 @@
 ActiveAdmin.register Akce do
+  permit_params :termin, :popis, :cena, :misto_srazu
 
 
   # See permitted parameters documentation:
