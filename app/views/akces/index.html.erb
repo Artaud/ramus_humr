@@ -1,31 +1,42 @@
-<h1>Listing akces</h1>
-
-<table>
+<%- model_class = Akce -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Akce %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Termin</th>
-      <th>Popis</th>
-      <th>Cena</th>
-      <th>Misto srazu</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:termin) %></th>
+      <th><%= model_class.human_attribute_name(:popis) %></th>
+      <th><%= model_class.human_attribute_name(:cena) %></th>
+      <th><%= model_class.human_attribute_name(:misto_srazu) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @akces.each do |akce| %>
       <tr>
+        <td><%= akce.id %></td>
         <td><%= akce.termin %></td>
         <td><%= akce.popis %></td>
         <td><%= akce.cena %></td>
         <td><%= akce.misto_srazu %></td>
-        <td><%= link_to 'Show', akce %></td>
-        <td><%= link_to 'Edit', edit_akce_path(akce) %></td>
-        <td><%= link_to 'Destroy', akce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l akce.created_at, format: :long %></td>
+        <td>
+          <%= link_to akce_path(akce), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to akce_path(akce), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Akce', new_akce_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_akce_path,
+            :class => 'btn btn-primary' %>

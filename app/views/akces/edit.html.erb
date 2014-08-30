@@ -1,6 +1,5 @@
-<h1>Editing akce</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @akce %> |
-<%= link_to 'Back', akces_path %>
+<%- model_class = Akce -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Akce %></h1>
+</div>
+<%= render :partial => 'form' %>

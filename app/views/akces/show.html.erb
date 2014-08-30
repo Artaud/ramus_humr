@@ -1,24 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Akce -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Akce %></h1>
+</div>
 
-<p>
-  <strong>Termin:</strong>
-  <%= @akce.termin %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:termin) %></dt>
+      <dd><pre class="prettyprint"><%= @akce.termin %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:popis) %></dt>
+      <dd><pre class="prettyprint"><%= @akce.popis %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:cena) %></dt>
+      <dd><pre class="prettyprint"><%= @akce.cena %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:misto_srazu) %></dt>
+      <dd><pre class="prettyprint"><%= @akce.misto_srazu %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Popis:</strong>
-  <%= @akce.popis %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              akces_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_akce_path(@akce), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              akce_path(@akce),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Cena:</strong>
-  <%= @akce.cena %>
-</p>
-
-<p>
-  <strong>Misto srazu:</strong>
-  <%= @akce.misto_srazu %>
-</p>
-
-<%= link_to 'Edit', edit_akce_path(@akce) %> |
-<%= link_to 'Back', akces_path %>
