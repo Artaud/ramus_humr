@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jmeno_prijmeni: MyString
+  kontakt: MyString
+  role_ucastnika_id: 
+  vzkaz: MyString
+  akce_id: 
+
+two:
+  jmeno_prijmeni: MyString
+  kontakt: MyString
+  role_ucastnika_id: 
+  vzkaz: MyString
+  akce_id: 
