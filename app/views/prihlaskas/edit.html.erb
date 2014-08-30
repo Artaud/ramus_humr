@@ -1,6 +1,5 @@
-<h1>Editing prihlaska</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @prihlaska %> |
-<%= link_to 'Back', prihlaskas_path %>
+<%- model_class = Prihlaska -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Prihlaska %></h1>
+</div>
+<%= render :partial => 'form' %>
