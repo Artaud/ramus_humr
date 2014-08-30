@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Termin:</strong>
+  <%= @akce.termin %>
+</p>
+
+<p>
+  <strong>Popis:</strong>
+  <%= @akce.popis %>
+</p>
+
+<p>
+  <strong>Cena:</strong>
+  <%= @akce.cena %>
+</p>
+
+<p>
+  <strong>Misto srazu:</strong>
+  <%= @akce.misto_srazu %>
+</p>
+
+<%= link_to 'Edit', edit_akce_path(@akce) %> |
+<%= link_to 'Back', akces_path %>

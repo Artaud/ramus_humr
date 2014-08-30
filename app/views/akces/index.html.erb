@@ -1,0 +1,31 @@
+<h1>Listing akces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Termin</th>
+      <th>Popis</th>
+      <th>Cena</th>
+      <th>Misto srazu</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @akces.each do |akce| %>
+      <tr>
+        <td><%= akce.termin %></td>
+        <td><%= akce.popis %></td>
+        <td><%= akce.cena %></td>
+        <td><%= akce.misto_srazu %></td>
+        <td><%= link_to 'Show', akce %></td>
+        <td><%= link_to 'Edit', edit_akce_path(akce) %></td>
+        <td><%= link_to 'Destroy', akce, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Akce', new_akce_path %>
