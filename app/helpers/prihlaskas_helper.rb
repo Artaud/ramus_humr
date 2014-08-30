@@ -1,0 +1,2 @@
+module PrihlaskasHelper
+end

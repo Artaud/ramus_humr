@@ -1,0 +1,33 @@
+<h1>Listing prihlaskas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jmeno prijmeni</th>
+      <th>Kontakt</th>
+      <th>Role ucastnika</th>
+      <th>Vzkaz</th>
+      <th>Akce</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prihlaskas.each do |prihlaska| %>
+      <tr>
+        <td><%= prihlaska.jmeno_prijmeni %></td>
+        <td><%= prihlaska.kontakt %></td>
+        <td><%= prihlaska.role_ucastnika %></td>
+        <td><%= prihlaska.vzkaz %></td>
+        <td><%= prihlaska.akce %></td>
+        <td><%= link_to 'Show', prihlaska %></td>
+        <td><%= link_to 'Edit', edit_prihlaska_path(prihlaska) %></td>
+        <td><%= link_to 'Destroy', prihlaska, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prihlaska', new_prihlaska_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Jmeno prijmeni:</strong>
+  <%= @prihlaska.jmeno_prijmeni %>
+</p>
+
+<p>
+  <strong>Kontakt:</strong>
+  <%= @prihlaska.kontakt %>
+</p>
+
+<p>
+  <strong>Role ucastnika:</strong>
+  <%= @prihlaska.role_ucastnika %>
+</p>
+
+<p>
+  <strong>Vzkaz:</strong>
+  <%= @prihlaska.vzkaz %>
+</p>
+
+<p>
+  <strong>Akce:</strong>
+  <%= @prihlaska.akce %>
+</p>
+
+<%= link_to 'Edit', edit_prihlaska_path(@prihlaska) %> |
+<%= link_to 'Back', prihlaskas_path %>
