@@ -1,0 +1,9 @@
+cs:
+ akces:
+  index:
+   title: 'Vítejte na Humru!'
+ date:
+  order:
+   - day:
+   - month:
+   - year:
