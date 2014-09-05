@@ -1,3 +1,4 @@
+<div id="akce"><%= render @cart %></div>
 <%- model_class = Akce -%>
 <div class="row">
   <div class="col-md-12">
@@ -9,12 +10,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12"><h2>Aktuální akce</h2></div>
+
   </div>
   <div class="row">
     <div class="">
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Zúčastním se</th>
             <th><%= model_class.human_attribute_name(:termin) %></th>
             <th><%= model_class.human_attribute_name(:popis) %></th>
             <th><%= model_class.human_attribute_name(:cena) %></th>
@@ -25,6 +28,7 @@
         <tbody>
           <% @akces.each do |akce| %>
           <tr>
+            <td><%#= check_box_tag "checkax", akce.id %> <%= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %></td>
             <td><%= akce.termin %></td>
             <td><%= akce.popis %></td>
             <td><%= akce.cena %></td>
@@ -43,7 +47,16 @@
         </tbody>
       </table>
     </div>
-<%= link_to 'Nová přihláška', :controller => :prihlaskas, :action => :new %>
+    <div class="row">
+      <button class='btn btn-info' data-toggle='modal' data-target="#myModal">Nova prihlaska modal</button>
+    </div>
+    <div class="row">
+      <button class='btn btn-info' data-toggle='modal' data-target="#showCheckedModal">Show checked modal</button>
+    </div>
+    <div class="row">
+      <%= link_to 'Nová přihláška link_to', :controller => :prihlaskas, :action => :new %>
+    </div>
+    <input type="button" name="button" Value="Get checked boxes" onClick="count('checkax')">
   </div>
 
   <div class="row">
@@ -62,3 +75,46 @@
     </div>
   </div>
 </div>
+
+<!-- ShowCheckedModal -->
+<div class="modal fade" id="showCheckedModal" tabindex="-1" role="dialog" aria-labelledby="showCheckedModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="showCheckedModalLabel">Přihlásili jste se na tyto akce:</h4>
+      </div>
+      <div class="modal-body">
+        <div id="prihlaseneakce">
+          <%= render @cart %>
+        </div>
+        <br>
+        Prosím zadejte Vaše jméno a potvrďte přihlášení.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- EndShowCheckedModal -->
+
+
+<!-- PrihlModal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Title</h4>
+      </div>
+      <div class="modal-body">
+        Body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->

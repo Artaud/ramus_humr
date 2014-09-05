@@ -1,4 +1,6 @@
 class PrihlaskasController < ApplicationController
+  include CurrentCart
+  before_action :set_cart, only: [:create]
   before_action :set_prihlaska, only: [:show, :edit, :update, :destroy]
 
   # GET /prihlaskas
@@ -24,11 +26,13 @@ class PrihlaskasController < ApplicationController
   # POST /prihlaskas
   # POST /prihlaskas.json
   def create
-    @prihlaska = Prihlaska.new(prihlaska_params)
+    akce = Akce.find(params[:akce_id])
+    @prihlaska = @cart.prihlaskas.build(akce: akce)
 
     respond_to do |format|
       if @prihlaska.save
-        format.html { redirect_to @prihlaska, notice: 'Prihlaska was successfully created.' }
+        format.js
+        format.html { redirect_to(root_url, notice: 'Prihlaska was successfully created.') }
         format.json { render :show, status: :created, location: @prihlaska }
       else
         format.html { render :new }
@@ -43,6 +47,7 @@ class PrihlaskasController < ApplicationController
     respond_to do |format|
       if @prihlaska.update(prihlaska_params)
         format.html { redirect_to @prihlaska, notice: 'Prihlaska was successfully updated.' }
+        format.js
         format.json { render :show, status: :ok, location: @prihlaska }
       else
         format.html { render :edit }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830185155) do
+ActiveRecord::Schema.define(version: 20140904193626) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,18 +55,19 @@ ActiveRecord::Schema.define(version: 20140830185155) do
     t.datetime "updated_at"
   end
 
-  create_table "prihlaskas", force: true do |t|
-    t.string   "jmeno_prijmeni"
-    t.string   "kontakt"
-    t.integer  "role_ucastnika_id"
-    t.string   "vzkaz"
-    t.integer  "akce_id"
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "prihlaskas", force: true do |t|
+    t.integer  "akce_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cart_id"
+  end
+
   add_index "prihlaskas", ["akce_id"], name: "index_prihlaskas_on_akce_id"
-  add_index "prihlaskas", ["role_ucastnika_id"], name: "index_prihlaskas_on_role_ucastnika_id"
 
   create_table "role_ucastnikas", force: true do |t|
     t.string   "nazev"

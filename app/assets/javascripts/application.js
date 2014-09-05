@@ -14,5 +14,40 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-
 //= require_tree .
+
+function getCheckedBoxes(boxName) {
+  var checkboxes = document.getElementsByName(boxName);
+  var checkboxesChecked = [];
+  var ids = [];
+  clearPrihlAkce();
+
+  for (var i=0; i<checkboxes.length; i++) {
+     if (checkboxes[i].checked) {
+        checkboxesChecked.push(checkboxes[i]); // or i+1 if you want 1-based 
+     }
+  }
+
+	for (var i=0; i<checkboxesChecked.length; i++) {
+		var div = document.getElementById('prihlaseneakce');
+		div.innerHTML = div.innerHTML+ checkboxesChecked[i].value + '<br>';
+		ids.push(checkboxesChecked[i].value)
+	}
+  return ids.length > 0 ? ids : "none";
+}
+
+function count(name) {
+  alert ("Checked boxes: " + getCheckedBoxes(name));
+}
+
+function getAkceFromCheckedBoxes() {
+	for (var i=0; i<checkboxesChecked.length; i++) {
+		document.getElementById('prihlaseneakce').innerHTML = checkboxesChecked[i]
+	}
+}
+
+function clearPrihlAkce() {
+    var div = document.getElementById('prihlaseneakce');
+    div.innerHTML = '';
+}
+
