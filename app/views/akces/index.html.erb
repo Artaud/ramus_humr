@@ -28,7 +28,7 @@
           <% @akces.each do |akce| %>
           <tr>
             <td>
-              <%= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true}, :class => 'checkbox' %>
+              <%= check_box_tag 'checkbox', akce.id, checked = Prihlaska.where(cart_id: @cart.id, akce_id: akce.id).exists?, :data => {:remote => true}, :class => 'checkbox' %>
               <%#= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true, 
                 url: url_for(controller: :prihlaskas, action: :create, akce_id: akce), method: :post}, :class => 'checkbox' %>
               <%#= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %>
