@@ -6,9 +6,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= model_class.human_attribute_name(:jmeno_prijmeni) %></th>
-      <th><%= model_class.human_attribute_name(:kontakt) %></th>
-      <th><%= model_class.human_attribute_name(:vzkaz) %></th>
+      <th>AKCE ID</th>
+      <th>CART ID</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,9 +16,8 @@
     <% @prihlaskas.each do |prihlaska| %>
       <tr>
         <td><%= prihlaska.id %></td>
-        <td><%= prihlaska.jmeno_prijmeni %></td>
-        <td><%= prihlaska.kontakt %></td>
-        <td><%= prihlaska.vzkaz %></td>
+        <td><%= prihlaska.akce_id %></td>
+        <td><%= prihlaska.cart_id %></td>
         <td><%=l prihlaska.created_at, format: :long %></td>
         <td>
           <%= link_to prihlaska_path(prihlaska), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

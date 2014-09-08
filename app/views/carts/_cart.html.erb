@@ -1,6 +1,5 @@
-<h2>prihlaska</h2>
 <%= render(cart.prihlaskas) %>
-
-<%= button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Sure?' %>
+<br>
+<%= button_to 'Zrušit přihlášky', @cart, :method => :delete, :confirm => 'Smazat všechny přihlášky?' %>
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

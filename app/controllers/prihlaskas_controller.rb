@@ -1,7 +1,7 @@
 class PrihlaskasController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
-  before_action :set_prihlaska, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :destroy]
+  before_action :set_prihlaska, only: [:show, :edit, :update]
 
   # GET /prihlaskas
   # GET /prihlaskas.json
@@ -59,12 +59,30 @@ class PrihlaskasController < ApplicationController
   # DELETE /prihlaskas/1
   # DELETE /prihlaskas/1.json
   def destroy
-    @prihlaska.destroy
+    # find current cart
+    # find akce_id which i want to destroy = akceid
+    # destroy all prihlaskas with akce_id = akceid and cart_id = current_cart.id
+    # @aktual_prihlaska = Prihlaska.where(cart_id: @cart.id)
+    prihlaskas_id = Prihlaska.find_by(akce_id: params[:akce_id]).id
+    Prihlaska.destroy(prihlaskas_id)
+    # @prihlaska.destroy
+
     respond_to do |format|
-      format.html { redirect_to prihlaskas_url, notice: 'Prihlaska was successfully destroyed.' }
+      # format.html { redirect_to prihlaskas_url, notice: 'Prihlaska was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end
+
+  # def destroy_prihlaska_in_cart
+  #   prihlaskas_id = Prihlaska.where(cart_id: @cart.id).id
+  #   Prihlaska.destroy(prihlaskas_id)
+
+  #   respond_to do |format|
+  #     format.html { redirect_to prihlaskas_url, notice: 'Prihlaska was successfully destroyed.' }
+  #     format.js
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

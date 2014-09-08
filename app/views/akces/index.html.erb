@@ -1,4 +1,3 @@
-<div id="akce"><%= render @cart %></div>
 <%- model_class = Akce -%>
 <div class="row">
   <div class="col-md-12">
@@ -28,7 +27,15 @@
         <tbody>
           <% @akces.each do |akce| %>
           <tr>
-            <td><%#= check_box_tag "checkax", akce.id %> <%= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %></td>
+            <td>
+              <%= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true}, :class => 'checkbox' %>
+              <%#= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true, 
+                url: url_for(controller: :prihlaskas, action: :create, akce_id: akce), method: :post}, :class => 'checkbox' %>
+              <%#= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %>
+              <%#= button_to 'Remove from prihlaska',  prihlaskas_path(cart_id: @cart.id, akce_id: akce), :method => :delete, :remote => true %>
+              <%#= check_box_tag 'checkboxa', akce.id, checked = false, :data => {:remote => true, 
+                url: url_for(controller: :prihlaskas, action: :destroy, cart_id: @cart.id, akce_id: akce), method: :delete}, :class => 'checkboxa' %>
+            </td>
             <td><%= akce.termin %></td>
             <td><%= akce.popis %></td>
             <td><%= akce.cena %></td>
@@ -48,15 +55,10 @@
       </table>
     </div>
     <div class="row">
-      <button class='btn btn-info' data-toggle='modal' data-target="#myModal">Nova prihlaska modal</button>
+      <div class="center">
+        <button class='btn btn-info' data-toggle='modal' data-target="#showCheckedModal">Přihlásit se na zašrktnuté humry</button>
+      </div>
     </div>
-    <div class="row">
-      <button class='btn btn-info' data-toggle='modal' data-target="#showCheckedModal">Show checked modal</button>
-    </div>
-    <div class="row">
-      <%= link_to 'Nová přihláška link_to', :controller => :prihlaskas, :action => :new %>
-    </div>
-    <input type="button" name="button" Value="Get checked boxes" onClick="count('checkax')">
   </div>
 
   <div class="row">
@@ -69,9 +71,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="center">
-      <%= link_to t('.new', :default => t("helpers.links.new")),
-      new_akce_path,
-      :class => 'btn btn-primary' %>
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_akce_path, :class => 'btn btn-primary' %>
     </div>
   </div>
 </div>
@@ -118,3 +118,9 @@
   </div>
 </div>
 <!-- Modal END -->
+
+<!-- some javascript -->
+<%= javascript_tag do %>
+  window.currentcartid = '<%= j @cart.id.to_s %>';
+<% end %>
+
