@@ -57,6 +57,7 @@ $( document ).ready(function() {
  });
 });
 
+
 // $('.checkbox').click(function() {
 //   var checked; 
 //   if ($(this).is(':checked')) {

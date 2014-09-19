@@ -1,4 +1,5 @@
 ActiveAdmin.register Prihlaska do
+  permit_params :jmeno, :prijmeni, :telefon, :email, :vzkaz
 
 
   # See permitted parameters documentation:
