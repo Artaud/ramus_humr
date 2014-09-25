@@ -1,5 +1,6 @@
 class Akce < ActiveRecord::Base
 	has_many :prihlaskas
+	just_define_datetime_picker :termin #, :add_to_attr_accessible => true
 
 	before_destroy :ensure_not_referenced_by_any_prihlaska
 
