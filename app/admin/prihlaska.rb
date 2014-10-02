@@ -1,5 +1,10 @@
 ActiveAdmin.register Prihlaska do
 
+  
+  menu label: 'Non-cart prihlaska', priority: 4
+  belongs_to :cart
+  navigation_menu :cart
+  # menu false
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

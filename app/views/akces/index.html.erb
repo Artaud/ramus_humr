@@ -13,7 +13,7 @@
   </div>
   <div class="row">
     <div class="">
-      <table class="table table-striped">
+      <table class="table">
         <thead>
           <tr>
             <th>Zúčastním se</th>
@@ -27,17 +27,17 @@
         <tbody>
           <% @akces.each do |akce| %>
           <% if akce.termin >= Date.today %>
-          <tr>
-            <td>
+          <tr class="center">
+            <td class="col1">
               <%= check_box_tag 'checkbox', akce.id, checked = Prihlaska.where(cart_id: @cart.id, akce_id: akce.id).exists?, :data => {:remote => true}, :class => 'checkbox' %>
               <%#= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true, 
-                url: url_for(controller: :prihlaskas, action: :create, akce_id: akce), method: :post}, :class => 'checkbox' %>
+              url: url_for(controller: :prihlaskas, action: :create, akce_id: akce), method: :post}, :class => 'checkbox' %>
               <%#= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %>
               <%#= button_to 'Remove from prihlaska',  prihlaskas_path(cart_id: @cart.id, akce_id: akce), :method => :delete, :remote => true %>
               <%#= check_box_tag 'checkboxa', akce.id, checked = false, :data => {:remote => true, 
-                url: url_for(controller: :prihlaskas, action: :destroy, cart_id: @cart.id, akce_id: akce), method: :delete}, :class => 'checkboxa' %>
+              url: url_for(controller: :prihlaskas, action: :destroy, cart_id: @cart.id, akce_id: akce), method: :delete}, :class => 'checkboxa' %>
             </td>
-            <td><%= akce.termin %></td>
+            <td><%= akce.termin.strftime('%e.%-m.%Y - %k:%M') %></td>
             <td><%= akce.popis %></td>
             <td><%= akce.cena %></td>
             <td><%= akce.misto_srazu %></td>
@@ -66,7 +66,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Proběhlé akce</h2>
-            <table class="table table-striped">
+      <table class="table">
         <thead>
           <tr>
             <th><%= model_class.human_attribute_name(:termin) %></th>
@@ -79,8 +79,8 @@
         <tbody>
           <% @akces.each do |akce| %>
           <% if akce.termin < Date.today %>
-          <tr>
-            <td><%= akce.termin %></td>
+          <tr class="center">
+            <td><%= akce.termin.strftime('%e.%-m.%Y - %k:%M') %></td>
             <td><%= akce.popis %></td>
             <td><%= akce.cena %></td>
             <td><%= akce.misto_srazu %></td>
@@ -152,6 +152,6 @@
 
 <!-- some javascript -->
 <%= javascript_tag do %>
-  window.currentcartid = '<%= j @cart.id.to_s %>';
+window.currentcartid = '<%= j @cart.id.to_s %>';
 <% end %>
 

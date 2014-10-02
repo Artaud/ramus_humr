@@ -71,6 +71,7 @@ class AkcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def akce_params
-      params.require(:akce).permit(:termin, :popis, :cena, :misto_srazu)
+      params.require(:akce).permit(:id, :termin, :popis, :cena, :misto_srazu, :termin_date, 
+        :termin_time_hour, :termin_time_minute, :_destroy)
     end
 end

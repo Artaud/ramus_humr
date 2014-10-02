@@ -1,7 +1,8 @@
 ActiveAdmin.register Akce do
-  permit_params :termin, :popis, :cena, :misto_srazu
+  menu label: "Akce", priority: 2
+  permit_params :termin, :popis, :cena, :misto_srazu, :termin_date, :termin_time_hour, :termin_time_minute
 
-  form do |f|
+   form do |f|
     f.inputs "Details" do
       f.input :termin, as: :just_datetime_picker
       f.input :popis, as: :string
