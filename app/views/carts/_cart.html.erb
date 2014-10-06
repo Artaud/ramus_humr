@@ -1,53 +1,76 @@
-<% if cart.prihlaskas.any? %>
-<%= render(cart.prihlaskas) %>
-<br>
-<%= button_to 'Zrušit přihlášky', @cart, method: :delete, confirm: "Smazat všechny přihlášky?" %>
-<br>
+	<% if cart.prihlaskas.any? %>
+	<%= render(cart.prihlaskas) %>
+		<div class="row">
+			<div class="col-md-offset-6 col-md-6">
+				<%#= button_to 'Zrušit přihlášky', @cart, method: :delete, confirm: "Smazat všechny přihlášky?" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				Prosím zadejte Vaše jméno a potvrďte přihlášení.
+			</div>
+		</div>
 
-Prosím zadejte Vaše jméno a potvrďte přihlášení.
-
-<%= form_for @cart, :html => { :class => 'form-horizontal form-model' } do |f| %>
-<div class="form-group">
-	<%= f.label :jmeno, :class => 'control-label col-md-2' %>
-	<div class="col-md-9">
-		<%= f.text_field :jmeno, :class => 'text-field form-control' %>
+	<div class="container">
+		<div class="row">
+			<%= form_for @cart, :html => { :class => 'form-horizontal form-model' } do |f| %>
+			<div class="form-group">
+				<div class="col-md-2">
+					<%= f.label :jmeno, :class => 'control-label col-md-2' %>
+				</div>
+				<div class="col-md-10">
+					<%= f.text_field :jmeno, :class => 'text-field form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<%= f.label :prijmeni, :class => 'control-label col-md-2' %>
+				<div class="col-md-9">
+					<%= f.text_field :prijmeni, :class => 'text-field form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<%= f.label :email, :class => 'control-label col-md-2' %>
+				<div class="col-md-9">
+					<%= f.text_field :email, :class => 'text-field form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<%= f.label :telefon, :class => 'control-label col-md-2' %>
+				<div class="col-md-9">
+					<%= f.text_field :telefon, :class => 'text-field form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<%= f.label :vzkaz, :class => 'control-label col-md-2' %>
+				<div class="col-md-9">
+					<%= f.text_area :vzkaz, :class => 'text-field form-control' %>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-9">
+				<%= f.hidden_field :potvrzeno, :class => 'text-field form-control', value: true %>
+			</div>
+		</div>
 	</div>
-</div>
-<div class="form-group">
-	<%= f.label :prijmeni, :class => 'control-label col-md-2' %>
-	<div class="col-md-9">
-		<%= f.text_field :prijmeni, :class => 'text-field form-control' %>
-	</div>
-</div>
-<div class="form-group">
-	<%= f.label :email, :class => 'control-label col-md-2' %>
-	<div class="col-md-9">
-		<%= f.text_field :email, :class => 'text-field form-control' %>
-	</div>
-</div>
-<div class="form-group">
-	<%= f.label :telefon, :class => 'control-label col-md-2' %>
-	<div class="col-md-9">
-		<%= f.text_field :telefon, :class => 'text-field form-control' %>
-	</div>
-</div>
-<div class="form-group">
-	<%= f.label :vzkaz, :class => 'control-label col-md-2' %>
-	<div class="col-md-9">
-		<%= f.text_area :vzkaz, :class => 'text-field form-control' %>
-	</div>
-</div>
-<div class="form-group">
-	<div class="col-md-9">
-		<%= f.hidden_field :potvrzeno, :class => 'text-field form-control', value: true %>
-	</div>
-</div>
-<div class="form-group">
-	<div class='col-md-offset-2 col-md-10'>
-		<%= f.submit 'Přihlásit se!', :class => 'btn btn-primary' %>
-		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<%#= link_to t('.cancel', :default => t("helpers.links.cancel")),
-		carts_path, :class => 'btn btn-default' %>
+	<div class="row">
+		<div class="form-group">
+			<div class='col-md-offset-2 col-md-10'>
+				<%= f.submit 'Přihlásit se!', :class => 'btn btn-primary' %>
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Close
+				</button>
+				<%#= link_to t('.cancel', :default => t("helpers.links.cancel")), carts_path, :class => 'btn btn-default' %>
+			</div>
+		</div>
 	</div>
 </div>
 <% end %>

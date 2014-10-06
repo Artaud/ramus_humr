@@ -40,3 +40,15 @@
 th{
 	text-align: center;
 }
+
+.border-around {
+	border: 3px solid black;
+	padding: 1%;
+
+	-webkit-border-radius: 5px;
+	-webkit-border-top-right-radius: 9px;
+	-moz-border-radius: 5px;
+	-moz-border-radius-topright: 9px;
+	border-radius: 5px;
+	border-top-right-radius: 9px;
+}
