@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-md-12">
-		>> <%= prihlaska.akce.termin.to_date %>, <%= prihlaska.akce.popis %>
+	<div class="col-md-12">
+		<li> <%= prihlaska.akce.termin.strftime('%e.%-m.%Y - %k:%M') %>, <%= prihlaska.akce.popis %> </li>
 	</div>
 </div>
