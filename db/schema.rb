@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006114651) do
+ActiveRecord::Schema.define(version: 20141006115023) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20141006114651) do
     t.text     "vzkaz"
     t.boolean  "potvrzeno",  default: false
     t.string   "role"
+    t.boolean  "vozickar"
+    t.string   "prukaz"
   end
 
   create_table "prihlaskas", force: true do |t|
