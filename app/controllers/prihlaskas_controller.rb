@@ -17,6 +17,7 @@ class PrihlaskasController < ApplicationController
   # GET /prihlaskas/new
   def new
     @prihlaska = Prihlaska.new
+    @akces = Akce.find(params[:akce])
   end
 
   # GET /prihlaskas/1/edit
@@ -26,7 +27,7 @@ class PrihlaskasController < ApplicationController
   # POST /prihlaskas
   # POST /prihlaskas.json
   def create
-    akce = Akce.find(params[:akce_id])
+    akce = Akce.find(params[:checkbox])
     @prihlaska = @cart.prihlaskas.build(akce: akce)
 
     respond_to do |format|

@@ -13,6 +13,7 @@
   </div>
   <div class="row">
     <div class="container border-around col-md-12">
+		<%= form_tag({controller: "prihlaskas", action: "new"}, method: "get", :html => { :class => 'form-horizontal form-model' }) do |f| %>
       <table class="table">
         <thead>
           <tr>
@@ -29,7 +30,7 @@
           <% if akce.termin >= Date.today %>
           <tr class="center">
             <td class="col1">
-              <%= check_box_tag 'checkbox', akce.id, checked = false %>
+              <%= check_box_tag 'akce[]', akce.id, checked = false %>
               <%#= check_box_tag 'checkbox', akce.id, checked = false, :data => {:remote => true, 
               url: url_for(controller: :prihlaskas, action: :create, akce_id: akce), method: :post}, :class => 'checkbox' %>
               <%#= button_to 'Pridat do prihlasky', prihlaskas_path(akce_id: akce), :remote => true %>
@@ -60,6 +61,7 @@
           <button class='btn btn-primary'>Přihlásit se na zaškrtnuté humry</button>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 
