@@ -57,7 +57,7 @@
       </table>
       <div class="row">
         <div class="center">
-          <button class='btn btn-primary' data-toggle='modal' data-target="#showCheckedModal">Přihlásit se na zašrktnuté humry</button>
+          <button class='btn btn-primary'>Přihlásit se na zašrktnuté humry</button>
         </div>
       </div>
     </div>
@@ -104,46 +104,6 @@
     </div>
   </div>
 </div>
-
-<!-- ShowCheckedModal -->
-<div class="modal fade" id="showCheckedModal" tabindex="-1" role="dialog" aria-labelledby="showCheckedModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="showCheckedModalLabel">Vaše přihlášené Humry:</h4>
-      </div>
-      <div class="modal-body">
-        <div id="prihlaseneakce">
-                <%= render @cart %>
-        </div>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-<!-- EndShowCheckedModal -->
-
-
-<!-- PrihlModal -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Title</h4>
-      </div>
-      <div class="modal-body">
-        Body
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- Modal END -->
 
 <!-- some javascript -->
 <%= javascript_tag do %>
