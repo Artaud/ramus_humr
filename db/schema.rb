@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006115023) do
+ActiveRecord::Schema.define(version: 20151005160737) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,15 +58,7 @@ ActiveRecord::Schema.define(version: 20141006115023) do
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "jmeno"
-    t.string   "prijmeni"
-    t.string   "email"
-    t.string   "telefon"
-    t.text     "vzkaz"
     t.boolean  "potvrzeno",  default: false
-    t.string   "role"
-    t.boolean  "vozickar"
-    t.string   "prukaz"
   end
 
   create_table "prihlaskas", force: true do |t|
@@ -74,6 +66,14 @@ ActiveRecord::Schema.define(version: 20141006115023) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cart_id"
+    t.string   "jmeno"
+    t.string   "prijmeni"
+    t.string   "email"
+    t.string   "telefon"
+    t.text     "vzkaz"
+    t.string   "role"
+    t.boolean  "vozickar"
+    t.string   "prukaz"
   end
 
   add_index "prihlaskas", ["akce_id"], name: "index_prihlaskas_on_akce_id"
