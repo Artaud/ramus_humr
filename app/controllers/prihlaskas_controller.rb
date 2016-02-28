@@ -1,7 +1,7 @@
 class PrihlaskasController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: [:create, :destroy]
-  before_action :set_prihlaska, only: [:show, :edit, :update]
+  # include CurrentCart
+  # before_action :set_cart, only: [:create, :destroy]
+  # before_action :set_prihlaska, only: [:show, :edit, :update]
 
   # GET /prihlaskas
   # GET /prihlaskas.json
@@ -27,13 +27,13 @@ class PrihlaskasController < ApplicationController
   # POST /prihlaskas
   # POST /prihlaskas.json
   def create
-    akce = Akce.find(params[:checkbox])
-    @prihlaska = @cart.prihlaskas.build(akce: akce)
+    # akce = Akce.find(params[:checkbox])
+    @prihlaska = Prihlaska.new(prihlaska_params)
 
     respond_to do |format|
       if @prihlaska.save
         format.js
-        format.html { redirect_to(root_url, notice: 'Prihlaska was successfully created.') }
+        format.html { redirect_to(root_url, notice: 'Úspěšně jste se přihlásili!') }
         format.json { render :show, status: :created, location: @prihlaska }
       else
         format.html { render :new }
@@ -87,12 +87,12 @@ class PrihlaskasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_prihlaska
-      @prihlaska = Prihlaska.find(params[:id])
-    end
+    # def set_prihlaska
+      # @prihlaska = Prihlaska.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prihlaska_params
-      params.require(:prihlaska).permit(:jmeno_prijmeni, :kontakt, :role_ucastnika_id, :vzkaz, :akce_id)
+      params.require(:prihlaska).permit(:jmeno, :prijmeni, :email, :telefon, :role, :vozickar, :prukaz, :vzkaz, akce_ids: [])
     end
 end

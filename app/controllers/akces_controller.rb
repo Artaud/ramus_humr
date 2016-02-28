@@ -1,7 +1,7 @@
 class AkcesController < ApplicationController
-  include CurrentCart
+  # include CurrentCart
   before_action :set_akce, only: [:show, :edit, :update, :destroy]
-  before_action :set_cart
+  # before_action :set_cart
 
   # GET /akces
   # GET /akces.json

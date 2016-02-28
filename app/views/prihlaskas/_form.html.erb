@@ -1,90 +1,71 @@
-<%= form_for @prihlaska, :html => { :class => 'form-horizontal form-model' } do |f| %>
-	 <ul>
-		 <% @akces.each do |akce| %>
-		<li><%= akce.popis %></li>
-		 <% end %>
-	 </ul>
-	<div class="row">
-		<div class="form-group">
-			<%#= f.label :jmeno, 'Jméno:', :class => 'control-label col-md-2' %>
-			<div class="col-md-10 col-md-offset-1">
-				<%= f.text_field :jmeno, placeholder: 'Jméno', :class => 'text-field form-control' %>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group">
-			<%#= f.label :prijmeni, 'Příjmení:', :class => 'control-label col-md-2' %>
-			<div class="col-md-10 col-md-offset-1">
-				<%= f.text_field :prijmeni, placeholder: 'Příjmení', :class => 'text-field form-control' %>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group">
-			<%#= f.label :email, :class => 'control-label col-md-2' %>
-			<div class="col-md-10 col-md-offset-1">
-				<%= f.text_field :email, placeholder: 'E-mail', :class => 'text-field form-control' %>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group">
-			<%#= f.label :telefon, :class => 'control-label col-md-2' %>
-			<div class="col-md-10 col-md-offset-1">
-				<%= f.text_field :telefon, placeholder: 'Telefonní číslo', :class => 'text-field form-control' %>
-			</div>
-		</div>
-	</div>
+<%= form_for @prihlaska, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="col-md-12">
+	<ul>
+		<% @akces.each do |akce| %>
+		<li><%= akce.termin.strftime('%e.%-m.%Y - %k:%M') %>, <%= akce.popis %></li>
+		<% end %>
+	</ul>
+</div>
+<div class="form-group nomargin">
+	<%#= f.label :jmeno, 'Jméno:', :class => 'control-label col-md-2' %>
+	<%= f.text_field :jmeno, placeholder: 'Jméno', :class => 'text-field form-control' %>
+</div>
+<div class="form-group nomargin">
+	<%#= f.label :prijmeni, 'Příjmení:', :class => 'control-label col-md-2' %>
+	<%= f.text_field :prijmeni, placeholder: 'Příjmení', :class => 'text-field form-control' %>
+</div>
+<div class="form-group nomargin">
+	<%#= f.label :email, :class => 'control-label col-md-2' %>
+	<%= f.text_field :email, placeholder: 'E-mail', :class => 'text-field form-control' %>
+</div>
+<div class="form-group nomargin">
+	<%#= f.label :telefon, :class => 'control-label col-md-2' %>
+	<%= f.text_field :telefon, placeholder: 'Telefonní číslo', :class => 'text-field form-control' %>
+</div>
 
 
-	<div class="row">
-		<div class="form-group">
-			<%= f.label :role, 'Na humr jdu jako člověk:', :class => 'control-label col-md-6' %>
-			<div class="col-md-6">
-				<%= f.select :role, options_for_select(['asistující','asistovaný']), :class => 'select form-control' %>
-			</div>
-		</div>
+<div class="form-group nomargin">
+	<div class="col-md-3">
 	</div>
+	<%= f.label :role, 'Na humru se chci:', :class => 'control-label col-md-4' %>
+	<div class="col-md-5">
+		<%= f.select :role, options_for_select(['bavit','bavit a asistovat']), :class => 'select form-control' %>
+	</div>
+</div>
 
-	<div class="row">
-		<div class="form-group">
-			<%= f.label :vozickar, 'Pojedu na vozíku:', :class => 'control-label col-md-6' %>
-			<div class="col-md-1">
-				<%= f.check_box :vozickar, :class => 'checkbox form-control' %>
-			</div>
-		</div>
+<div class="form-group nomargin">
+	<div class="col-md-3">
 	</div>
-	
-	<div class="row">
-		<div class="form-group">
-			<%= f.label :prukaz, 'Mám průkaz:', :class => 'control-label col-md-6' %>
-			<div class="col-md-6">
-				<%= f.select :prukaz, options_for_select(['žádný','ZTP', 'ZTP/P']), :class => 'select form-control' %>
-			</div>
-		</div>
+	<%= f.label :vozickar, 'Pojedu na vozíku:', :class => 'control-label col-md-4' %>
+	<div class="col-md-1">
+		<%= f.check_box :vozickar, :class => 'checkbox form-control' %>
 	</div>
+</div>
 
-	<div class="row">
-		<div class="form-group">
-			<%#= f.label :vzkaz, :class => 'control-label col-md-2' %>
-			<div class="col-md-10 col-md-offset-1">
-				<%= f.text_area :vzkaz, placeholder: 'Zde nám můžete zanechat vzkaz', :class => 'text-field form-control' %>
-			</div>
-		</div>
+<div class="form-group nomargin">
+	<div class="col-md-3">
 	</div>
-	<div class="form-group">
-		<%= f.hidden_field :potvrzeno, :class => 'text-field form-control', value: true %>
+	<%= f.label :prukaz, 'Mám průkaz:', :class => 'control-label col-md-4' %>
+	<div class="col-md-5">
+		<%= f.select :prukaz, options_for_select(['žádný','ZTP', 'ZTP/P']), :class => 'select form-control' %>
 	</div>
-	<div class="row">
-		<div class="form-group">
-			<div class='col-md-offset-2 col-md-10'>
-				<%= f.submit 'Přihlásit se!', :class => 'btn btn-primary' %>
-				<button type="button" class="btn btn-default" data-dismiss="modal">
-					Close
-				</button>
-				<%#= link_to t('.cancel', :default => t("helpers.links.cancel")), carts_path, :class => 'btn btn-default' %>
-			</div>
-		</div>
+</div>
+
+<div class="form-group nomargin">
+	<%#= f.label :vzkaz, :class => 'control-label col-md-2' %>
+	<%= f.text_area :vzkaz, placeholder: 'Zde nám můžete zanechat vzkaz', :class => 'text-field form-control' %>
+</div>
+
+<% @akces.each do |akce| %>
+	<%= f.hidden_field :akce_ids, multiple: true, value: akce.id %>
+<% end %>
+
+<div class="form-group nomargin">
+	<div class="col-md-7">
 	</div>
+	<div class="col-md-5">
+		<%= f.submit 'Přihlásit se!', :class => 'btn btn-primary' %>
+	</div>
+	<%#= link_to t('.cancel', :default => t("helpers.links.cancel")), carts_path, :class => 'btn btn-default' %>
+</div>
 <% end %>

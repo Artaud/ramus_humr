@@ -1,5 +1,6 @@
 class Akce < ActiveRecord::Base
-	has_many :prihlaskas
+	has_many :akce_prihlaskas
+	has_many :prihlaskas, through: :akce_prihlaskas
 	just_define_datetime_picker :termin
 
 	validates :termin, presence: true

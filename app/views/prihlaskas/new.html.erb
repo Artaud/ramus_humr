@@ -1,6 +1,16 @@
 <%- model_class = Prihlaska -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Prihlaska %></h1>
+<div class="row">
+	<div class="col-md-12">	
+		<div class="page-header">
+			<h1 class="center">
+				Přihláška
+			</h1>
+		</div>
+	</div>	
 </div>
-<%= render :partial => 'form' %>
 
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= render :partial => 'form' %>
+	</div>
+</div>

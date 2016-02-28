@@ -1,13 +1,51 @@
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin.register_page "Nástěnka" do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 1, label: "Nástěnka"
 
-  content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+  content do
+    columns do
+        column do 
+            panel "Přihlášky na aktivní Humry" do
+                table do 
+                    thead do 
+                        tr do
+                            %w[Akce Jméno Příjmení Role].each &method(:th)
+                        end
+                    end
+                    tbody do
+                        Prihlaska.all.map do |prihl|
+                            tr do
+                                td do end
+                                td do prihl.jmeno end
+                                td do prihl.prijmeni end
+                                td do end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        column do            
+            panel "Přihlášky na aktivní Humry" do
+                table do 
+                    thead do 
+                        tr do
+                            %w[Akce Jméno Příjmení Role].each &method(:th)
+                        end
+                    end
+                    tbody do
+                        Prihlaska.all.map do |prihl|
+                            tr do
+                                td do end
+                                td do prihl.jmeno end
+                                td do prihl.prijmeni end
+                                td do end
+                            end
+                        end
+                    end
+                end
+            end
+        end
     end
 
     # Here is an example of a simple dashboard with columns and panels.

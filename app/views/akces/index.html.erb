@@ -9,7 +9,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12"><h2>Aktuální akce</h2></div>
-
   </div>
   <div class="row">
     <div class="container border-around col-md-12">
@@ -18,11 +17,10 @@
         <thead>
           <tr>
             <th>Zúčastním se</th>
-            <th><%= model_class.human_attribute_name(:termin) %></th>
-            <th><%= model_class.human_attribute_name(:popis) %></th>
-            <th><%= model_class.human_attribute_name(:cena) %></th>
-            <th><%= model_class.human_attribute_name(:misto_srazu) %></th>
-            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+            <th>Termín</th>
+            <th>Popis</th>
+            <th>Cena</th>
+            <th>Místo srazu</th>
           </tr>
         </thead>
         <tbody>
@@ -42,15 +40,6 @@
             <td><%= akce.popis %></td>
             <td><%= akce.cena %></td>
             <td><%= akce.misto_srazu %></td>
-            <td>
-              <%= link_to akce_path(akce), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-              <%= glyph 'info-sign' %>
-              <%= glyph 'pencil' %>
-              <%- end -%>
-              <%= link_to akce_path(akce), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-              <%= glyph 'remove' %>
-              <%- end -%>
-            </td>
           </tr>
           <% end %>
           <% end %>
@@ -58,7 +47,7 @@
       </table>
       <div class="row">
         <div class="center">
-          <button class='btn btn-primary'>Přihlásit se na zaškrtnuté humry</button>
+          <button class='btn btn-primary'>Přihlásit se na zaškrtnuté Humry</button>
         </div>
       </div>
       <% end %>
@@ -73,11 +62,10 @@
         <table class="table">
           <thead>
             <tr>
-              <th><%= model_class.human_attribute_name(:termin) %></th>
-              <th><%= model_class.human_attribute_name(:popis) %></th>
-              <th><%= model_class.human_attribute_name(:cena) %></th>
-              <th><%= model_class.human_attribute_name(:misto_srazu) %></th>
-              <th><%=t '.actions', :default => t("helpers.actions") %></th>
+              <th>Termín</th>
+              <th>Popis</th>
+              <th>Cena</th>
+              <th>Místo srazu</th>
             </tr>
           </thead>
           <tbody>
@@ -88,15 +76,6 @@
               <td><%= akce.popis %></td>
               <td><%= akce.cena %></td>
               <td><%= akce.misto_srazu %></td>
-              <td>
-                <%= link_to akce_path(akce), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-                <%= glyph 'info-sign' %>
-                <%= glyph 'pencil' %>
-                <%- end -%>
-                <%= link_to akce_path(akce), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-                <%= glyph 'remove' %>
-                <%- end -%>
-              </td>
             </tr>
             <% end %>
             <% end %>
@@ -107,8 +86,4 @@
   </div>
 </div>
 
-<!-- some javascript -->
-<%= javascript_tag do %>
-window.currentcartid = '<%= j @cart.id.to_s %>';
-<% end %>
 

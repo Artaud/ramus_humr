@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 gem 'pg'
 gem 'newrelic_rpm'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -58,4 +58,5 @@ gem 'just-datetime-picker'
 group :development do
 	gem 'better_errors'
 	gem 'sqlite3'
+	gem 'web-console'
 end
